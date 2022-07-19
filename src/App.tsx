@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import api from './api';
+import { getId } from './entities/Deck';
 
 function App() {
+  useEffect(() => {
+    api.getDeck().then(getId).then(console.log).catch(console.log)
+  })
+
   return (
     <div className="App">
       <header className="App-header">
