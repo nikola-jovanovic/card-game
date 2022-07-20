@@ -1,20 +1,20 @@
-import loading, {
-  State as LoadingState,
-} from './loading'
+import selected, {
+  State as SelectedState,
+} from './selected'
 import board, {
   State as BoardState,
 } from '../../board/state'
 import { combineReducers } from '../utils'
 
 export type State = BoardState & {
-  loading: LoadingState
+  selected: SelectedState
 }
 
 export const defaultState: State = {
   ...board.defaultState,
-  loading: loading.defaultState,
+  selected: selected.defaultState,
 }
 
-const reducer = combineReducers({ ...board.reducersMap, loading: loading.reducer })
+const reducer = combineReducers({ ...board.reducersMap, selected: selected.reducer })
 
 export default reducer

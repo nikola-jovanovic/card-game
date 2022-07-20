@@ -1,4 +1,5 @@
-import api from '../features/board/api'
+import { ResponseError } from '../../../lib/request'
+import api from '../api'
 
 interface Response {
   ok: boolean,
@@ -20,9 +21,10 @@ describe('api', () => {
     })
 
     it('fail', async () => {
-      mockFetch({ ok: false, status: 500 })
+      const response = { ok: false, status: 500 } as Response
+      mockFetch(response)
 
-      await expect(api.getDeck()).rejects.toEqual('Failed: 500')
+      await expect(api.getDeck()).rejects.toEqual(new ResponseError(response))
     })
   })
 
@@ -35,9 +37,10 @@ describe('api', () => {
     })
 
     it('fail', async () => {
-      mockFetch({ ok: false, status: 500 })
+      const response = { ok: false, status: 500 }
+      mockFetch(response)
 
-      await expect(api.getDraw("1")).rejects.toEqual('Failed: 500')
+      await expect(api.getDeck()).rejects.toEqual(new ResponseError(response))
     })
   })
 })

@@ -2,7 +2,8 @@ import reducer, { defaultState } from '..'
 import { Position } from '../../../board/types'
 import players, { Names } from '../../../board/state/players'
 import pile from '../../../board/state/pile'
-import loading from '../loading'
+import loading from '../../../board/state/loading'
+import selected from '../selected'
 
 describe('Root reducer', () => {
   describe('players', () => {
@@ -50,6 +51,16 @@ describe('Root reducer', () => {
   describe('loading', () => {
     it('set', () => {
       expect(reducer(defaultState, loading.actions.set(true))).toEqual({ ...defaultState, loading: true })
+    })
+
+    it('return default state on unknown action', () => {
+      expect(reducer(defaultState, { type: 'action', payload: true, meta: null })).toEqual(defaultState)
+    })
+  })
+
+  describe('selected', () => {
+    it('set', () => {
+      expect(reducer(defaultState, selected.actions.set(3))).toEqual({ ...defaultState, selected: 3 })
     })
 
     it('return default state on unknown action', () => {

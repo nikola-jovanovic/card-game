@@ -1,5 +1,5 @@
 
-import { Action } from "./types"
+import { Action } from './types'
 
 interface IActionCreator<P, M> {
   type: string

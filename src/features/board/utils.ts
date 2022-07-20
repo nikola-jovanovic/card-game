@@ -1,4 +1,4 @@
-import { Errors } from "io-ts"
+import { Errors } from 'io-ts'
 
 export function decodeErrors(e: Errors): string[] {
   return e.map(e => {

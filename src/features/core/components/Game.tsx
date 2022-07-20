@@ -1,22 +1,27 @@
 import React from 'react'
+import styled from 'styled-components'
+import Board from '../../board/Board'
+import Selection from '../../selection/components/Selection'
+import useSelected from '../hooks/useSelected'
 
-import { State } from '../state'
+const PageContainer = styled.div`
+  background-color: #04491f;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+`
 
-type Props = State
 
-const Game = ({ loading, players, pile }: Props): JSX.Element => {
-  if (loading) {
-    return <p>Loading...</p>
-  }
-
+const Game = (): JSX.Element => {
+  const { selected, setSelected } = useSelected()
   return (
-    <div>
-      {Object.keys(players).length ? (
-        <p>Board</p>
+    <PageContainer>
+      {selected > 0 ? (
+        <Board selected={selected} />
       ) : (
-        <p>Selection</p>
+        <Selection onSelection={setSelected} />
       )}
-    </div>
+    </PageContainer>
   )
 }
 

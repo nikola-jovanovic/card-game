@@ -24,7 +24,7 @@ export type State = {
 
 const defaultState: State = {}
 
-const set = createAction<State>("set")
+const set = createAction<State>('set')
 const addScore = createAction<Score, Names>('addScore')
 const removeCard = createAction<string, Names>('removeCard')
 const clear = createAction<void>('clear')

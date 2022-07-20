@@ -4,9 +4,9 @@ import { pipe } from 'fp-ts/function'
 
 const Cards: { [index: string]: number } = {
   'ACE': 1,
-  "JACK": 12,
-  "QUEEN": 13,
-  "KING":14
+  'JACK': 12,
+  'QUEEN': 13,
+  'KING': 14
 }
 
 const value = new Type<number, string, unknown>(
