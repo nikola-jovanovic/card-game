@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Title render 1`] = `
+.c0 {
+  color: #fff;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+<div>
+  <h1
+    class="c0"
+  >
+    title
+  </h1>
+</div>
+`;

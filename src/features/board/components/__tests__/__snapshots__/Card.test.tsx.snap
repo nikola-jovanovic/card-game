@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card facedown 1`] = `
+.c0 {
+  max-width: 80px;
+}
+
+<div>
+  <img
+    aria-label="facedown card"
+    class="c0"
+    src="https://dcassetcdn.com/design_img/3930521/154340/26190370/kfmqknarypcs90a4zrbf3ppavp_thumbnail.png"
+  />
+</div>
+`;
+
+exports[`Card render 1`] = `
+.c1 {
+  max-width: 80px;
+}
+
+.c0 {
+  border: none;
+  padding: 0;
+  margin-right: 4px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+<div>
+  <button
+    aria-label="JH"
+    class="c0"
+  >
+    <img
+      aria-label="JH"
+      class="c1"
+      src="image-url"
+    />
+  </button>
+</div>
+`;

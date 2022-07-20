@@ -1,26 +1,22 @@
-import { Position, Card } from './types'
-import useDispatch from '../core/hooks/useDispatch'
-import loadingState from './state/loading'
-import playersState, { Names } from './state/players'
 import { useCallback, useContext } from 'react'
+import useDispatch from '../core/hooks/useDispatch'
 import StateContext from '../core/contexts/State'
 import useSelected from '../core/hooks/useSelected'
-import { getData } from './service'
+import { actions as pileActions } from './state/pile'
+import { actions as playersActions } from './state/players'
+import { actions as loadingActions } from './state/loading'
+import { Card, Names } from './types'
+import { getData, getCards } from './service'
 
 const playerNames = [Names.Me, Names.Milisav, Names.Mileva, Names.Djura]
-const positionsByPlayers = [
-  [],
-  [],
-  [Position.Bottom, Position.Top],
-  [Position.Bottom, Position.Left, Position.Top],
-  [Position.Bottom, Position.Left, Position.Top, Position.Right],
-]
 
 const useBoard = () => {
   const { loading, players, pile } = useContext(StateContext)
   const { setSelected } = useSelected()
   const dispatch = useDispatch()
-  const setLoading = useCallback((payload: boolean) => dispatch(loadingState.actions.set(payload)), [dispatch])
+  const setLoading = useCallback((payload: boolean) => dispatch(loadingActions.set(payload)), [dispatch])
+
+  const activePlayers = Object.values(players).filter(player => player.active)
 
   const handleError = (e: any) => {
     console.error(e)
@@ -33,20 +29,9 @@ const useBoard = () => {
 
     getData(players)
       .then((cardsMatrix: Card[][]) => {
-        dispatch(
-          playersState.actions.set(
-            cardsMatrix.reduce(
-              (playersMap, cards, i) => ({
-                ...playersMap,
-                [playerNames[i]]: {
-                  cards,
-                  name: playerNames[i],
-                  position: positionsByPlayers[players][i],
-                  score: 0,
-                }
-              })
-              , {}
-            )
+        cardsMatrix.map((cards, i) =>
+          dispatch(
+            playersActions.set(cards, playerNames[i])
           )
         )
         setLoading(false)
@@ -55,7 +40,34 @@ const useBoard = () => {
 
   }
 
-  return { init, loading, players, pile }
+  const playCard = (card: Card) => {
+    getCards(
+      card,
+      activePlayers.filter(player => player.name !== Names.Me)
+    ).then(({ pile, winner, score }) => {
+      Object.entries(pile).map(([name, card]) => dispatch(playersActions.removeCard(card.code, name as Names)))
+      dispatch(pileActions.set(pile))
+
+      setTimeout(() => {
+        dispatch(pileActions.clear())
+        dispatch(playersActions.addScore(score, winner))
+      }, 2000)
+    })
+  }
+
+  const highestScore = Math.max(...activePlayers.map((_: any) => _.score))
+  const finalScore = players.Me.active && players.Me.cards.length === 0 &&
+    Object.values(pile).length === 0 && {
+    value: highestScore,
+    winners: activePlayers.filter((player: any) => player.score === highestScore),
+  }
+
+  return {
+    init, playCard, loading, players, pile, finalScore, reset: () => {
+      setSelected(0)
+      dispatch(playersActions.clear())
+    }
+  }
 }
 
 export default useBoard

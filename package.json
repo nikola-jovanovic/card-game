@@ -39,6 +39,10 @@
       "quotes": [
         "error",
         "single"
+      ],
+      "no-multiple-empty-lines": [
+        "error",
+        { "max": 1, "maxEOF": 0 }
       ]
     }
   },
@@ -53,5 +57,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "jest-styled-components": "^7.0.8"
   }
 }

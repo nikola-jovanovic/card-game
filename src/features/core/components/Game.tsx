@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Board from '../../board/Board'
-import Selection from '../../selection/components/Selection'
+import Selection from '../../selection/Selection'
 import useSelected from '../hooks/useSelected'
 
 const PageContainer = styled.div`
@@ -10,7 +10,6 @@ const PageContainer = styled.div`
   position: absolute;
   width: 100%;
 `
-
 
 const Game = (): JSX.Element => {
   const { selected, setSelected } = useSelected()

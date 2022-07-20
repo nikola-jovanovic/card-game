@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Player cpu 1`] = `
+.c0 {
+  color: #fff;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.c4 {
+  max-width: 80px;
+}
+
+.c3 {
+  padding-left: 50px;
+}
+
+.c3 > img {
+  margin-left: -50px;
+}
+
+.c1 {
+  color: white;
+  margin: 0 0 5px;
+}
+
+.c2 {
+  margin: 0 0 10px;
+}
+
+<div>
+  <div>
+    <h2
+      class="c0 c1"
+      color="white"
+    >
+      Me
+    </h2>
+    <p
+      class="c2"
+    >
+      Score: 
+      50
+    </p>
+    <div
+      class="c3"
+    >
+      <img
+        aria-label="facedown card"
+        class="c4"
+        src="https://dcassetcdn.com/design_img/3930521/154340/26190370/kfmqknarypcs90a4zrbf3ppavp_thumbnail.png"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Player user 1`] = `
+.c0 {
+  color: #fff;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.c5 {
+  max-width: 80px;
+}
+
+.c4 {
+  border: none;
+  padding: 0;
+  margin-right: 4px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.c3 {
+  padding-left: 0px;
+}
+
+.c3 > img {
+  margin-left: -50px;
+}
+
+.c1 {
+  color: yellow;
+  margin: 0 0 5px;
+}
+
+.c2 {
+  margin: 0 0 10px;
+}
+
+<div>
+  <div>
+    <h2
+      class="c0 c1"
+      color="yellow"
+    >
+      Me
+    </h2>
+    <p
+      class="c2"
+    >
+      Score: 
+      50
+    </p>
+    <div
+      class="c3"
+    >
+      <button
+        aria-label="JH"
+        class="c4"
+      >
+        <img
+          aria-label="JH"
+          class="c5"
+          src="image-url"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;

@@ -1,8 +1,8 @@
-import loading from '../loading'
+import loading, { actions } from '../loading'
 
 describe('loading reducer', () => {
   it('set', () => {
-    expect(loading.reducer(loading.defaultState, loading.actions.set(true))).toEqual(true)
+    expect(loading.reducer(loading.defaultState, actions.set(true))).toEqual(true)
   })
 
   it('return default state on unknown action', () => {

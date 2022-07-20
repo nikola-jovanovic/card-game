@@ -1,33 +1,27 @@
+import { Action } from '../../../shared/types'
 import { createAction, handleActions } from '../../../shared/utils'
-import { Card, Position } from '../types'
+import { Pile } from '../types'
 
-type PileCard = Card & {
-  player: string
-  position: Position
-}
-
-export type State = {
-  [key in Position]?: PileCard
-}
+export type State = Pile
 
 const defaultState: State = {}
 
-const set = createAction<PileCard>('set')
+const set = createAction<State>('set')
 const clear = createAction<void>('clear')
 
 const reducer = handleActions<State>({
-  [set.type]: (state, { payload }) => ({
-    ...state,
-    [payload.position]: payload,
-  }),
+  [set.type]: (_, { payload }: Action<State>) => payload,
   [clear.type]: () => defaultState,
-})
+}, defaultState)
+
+export const actions = {
+  set,
+  clear
+}
 
 const store = {
   reducer,
   defaultState,
-  actions: { set, clear }
 }
-
 
 export default store

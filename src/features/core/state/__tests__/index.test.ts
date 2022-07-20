@@ -1,29 +1,29 @@
-import reducer, { defaultState } from '..'
-import { Position } from '../../../board/types'
-import players, { Names } from '../../../board/state/players'
-import pile from '../../../board/state/pile'
-import loading from '../../../board/state/loading'
-import selected from '../selected'
+import reducer, { defaultState, State } from '..'
+import players, { actions as playersActions } from '../../../board/state/players'
+import pile, { actions as pileActions } from '../../../board/state/pile'
+import { actions as loadingActions } from '../../../board/state/loading'
+import { actions as selectedActions } from '../selected'
+import { Card, Names, Player } from '../../../board/types'
 
 describe('Root reducer', () => {
   describe('players', () => {
-    const player = { name: Names.Me, score: 10, position: Position.Bottom, cards: [{ image: 'image', value: 12, code: 'JH' }] }
-    const state = { ...defaultState, players: { [Names.Me]: player } }
+    const player: Player = { name: Names.Me, score: 0, active: true, cards: [{ image: 'image', value: 12, code: 'JH' }] }
+    const state: State = { ...defaultState, players: { ...players.defaultState, [Names.Me]: player } }
 
     it('set', () => {
-      expect(reducer(defaultState, players.actions.set(state.players))).toEqual(state)
+      expect(reducer(defaultState, playersActions.set(player.cards, Names.Me))).toEqual(state)
     })
 
     it('addScore', () => {
-      expect(reducer(state, players.actions.addScore(10, Names.Me))).toEqual({ ...defaultState, players: { [Names.Me]: { ...player, score: 20 } } })
+      expect(reducer(state, playersActions.addScore(10, Names.Me))).toEqual({ ...defaultState, players: { ...players.defaultState, [Names.Me]: { ...player, score: 10 } } })
     })
 
     it('removeCard', () => {
-      expect(reducer(state, players.actions.removeCard('JH', Names.Me))).toEqual({ ...defaultState, players: { [Names.Me]: { ...player, cards: [] } } })
+      expect(reducer(state, playersActions.removeCard('JH', Names.Me))).toEqual({ ...defaultState, players: { ...players.defaultState, [Names.Me]: { ...player, cards: [] } } })
     })
 
     it('clear', () => {
-      expect(reducer(state, players.actions.clear())).toEqual(defaultState)
+      expect(reducer(state, playersActions.clear())).toEqual(defaultState)
     })
 
     it('return default state on uknown action', () => {
@@ -32,15 +32,15 @@ describe('Root reducer', () => {
   })
 
   describe('pile', () => {
-    const card = { image: 'image', value: 12, code: 'Jh', player: 'me', position: Position.Bottom }
-    const state = { ...defaultState, pile: { [Position.Bottom]: card } }
+    const card: Card = { image: 'image', value: 12, code: 'Jh' }
+    const state = { ...defaultState, pile: { ...pile.defaultState, [Names.Me]: card } }
 
     it('set', () => {
-      expect(reducer(defaultState, pile.actions.set(card))).toEqual(state)
+      expect(reducer(defaultState, pileActions.set(state.pile))).toEqual(state)
     })
 
     it('clear', () => {
-      expect(reducer(state, pile.actions.clear())).toEqual(defaultState)
+      expect(reducer(state, pileActions.clear())).toEqual(defaultState)
     })
 
     it('return default state on uknown action', () => {
@@ -50,7 +50,7 @@ describe('Root reducer', () => {
 
   describe('loading', () => {
     it('set', () => {
-      expect(reducer(defaultState, loading.actions.set(true))).toEqual({ ...defaultState, loading: true })
+      expect(reducer(defaultState, loadingActions.set(true))).toEqual({ ...defaultState, loading: true })
     })
 
     it('return default state on unknown action', () => {
@@ -60,7 +60,7 @@ describe('Root reducer', () => {
 
   describe('selected', () => {
     it('set', () => {
-      expect(reducer(defaultState, selected.actions.set(3))).toEqual({ ...defaultState, selected: 3 })
+      expect(reducer(defaultState, selectedActions.set(3))).toEqual({ ...defaultState, selected: 3 })
     })
 
     it('return default state on unknown action', () => {

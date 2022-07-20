@@ -10,4 +10,8 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
+  p {
+    margin: 0 0 10px
+  }
 `

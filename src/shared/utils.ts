@@ -1,4 +1,5 @@
 
+import { Reducer } from 'react'
 import { Action } from './types'
 
 interface IActionCreator<P, M> {
@@ -6,24 +7,20 @@ interface IActionCreator<P, M> {
   (payload: P, meta: M): Action<P, M>
 }
 
-interface Reducer<S, P, M> {
-  (state: S, action: Action<P, M>): S
-}
-
 const id = () => Math.random().toString(32).slice(-8)
 
 export function createAction<P, M = void>(type: string): IActionCreator<P, M> {
   const uniqueType = `[${type}] ${id()}`
 
-  return Object.assign((payload: P, meta: M) => ({ type: uniqueType, payload, meta }), {
+  const action = (payload: P, meta: M) => ({ type: uniqueType, payload, meta })
+  return Object.assign(action, {
     type: uniqueType,
   })
 }
 
-
 export const handleActions = <S>(actions: {
-  [index: string]: Reducer<S, any, any>;
-}) => (state: S, action: Action<any, any>): S =>
+  [index: string]: Reducer<S, Action<any, any>>;
+}, defaultState: S) => (state: S = defaultState, action: Action<any, any>): S =>
     Object.entries(actions).reduce(
       (state, [type, reducer]) =>
         type === action.type ? reducer(state, action) : state,

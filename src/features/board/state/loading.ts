@@ -9,12 +9,13 @@ const set = createAction<boolean>('set')
 
 const reducer = handleActions<State>({
   [set.type]: (_, { payload }: Action<boolean>) => payload,
-})
+}, defaultState)
+
+export const actions = { set }
 
 const store = {
   reducer,
   defaultState,
-  actions: { set }
 }
 
 export default store
