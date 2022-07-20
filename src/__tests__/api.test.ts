@@ -1,4 +1,4 @@
-import api from '../api'
+import api from '../features/board/api'
 
 interface Response {
   ok: boolean,

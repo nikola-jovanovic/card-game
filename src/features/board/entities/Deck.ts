@@ -1,7 +1,7 @@
 import { string, type, TypeOf } from 'io-ts'
 import { map, mapLeft } from 'fp-ts/Either'
 import { pipe } from 'fp-ts/function'
-import { decodeErrors } from '../lib/utils'
+import { decodeErrors } from '../utils'
 
 const Deck = type(
   {

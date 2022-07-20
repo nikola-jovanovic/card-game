@@ -1,6 +1,5 @@
-import { createAction, handleActions } from '../lib/utils'
-import { Card } from '../types'
-import { Position } from './players'
+import { createAction, handleActions } from '../../../shared/utils'
+import { Card, Position } from '../types'
 
 type PileCard = Card & {
   player: string

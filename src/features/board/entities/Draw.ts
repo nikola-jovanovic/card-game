@@ -3,7 +3,7 @@ import { map, mapLeft } from 'fp-ts/Either'
 import { pipe } from 'fp-ts/function'
 
 import { Card } from './Card'
-import { decodeErrors } from '../lib/utils'
+import { decodeErrors } from '../utils'
 
 const Draw = exact(
   type(

@@ -1,10 +1,8 @@
 import { createContext, Dispatch } from 'react'
 
-type DispatchState = {
-  dispatch: Dispatch<any>
-}
+type DispatchState = Dispatch<any>
 
-const defaultState: DispatchState = { dispatch: () => { } }
+const defaultState: DispatchState = () => { }
 
 const DispatchContext = createContext<DispatchState>(defaultState)
 

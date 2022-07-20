@@ -1,32 +1,20 @@
-import React, { useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import api from './api';
-import { getId } from './entities/Deck';
+import React, { Reducer, useReducer } from 'react'
+import Dispatch from './features/core/contexts/Dispatch'
+import Game from './features/core/components/Game'
+import { Action } from './shared/types'
+import reducer, { defaultState, State } from './features/core/state'
 
-function App() {
-  useEffect(() => {
-    api.getDeck().then(getId).then(console.log).catch(console.log)
-  })
+const App = (): JSX.Element => {
+  const [state, dispatch] = useReducer<Reducer<State, Action<unknown>>>(
+    reducer,
+    defaultState,
+  )
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Dispatch.Provider value={dispatch}>
+      <Game {...state} />
+    </Dispatch.Provider>
   );
 }
 
-export default App;
+export default App

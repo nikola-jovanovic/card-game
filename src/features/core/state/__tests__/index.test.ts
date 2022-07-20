@@ -1,6 +1,7 @@
-import reducer, { defaultState } from '../'
-import players, { Names, Position } from '../players'
-import pile from '../pile'
+import reducer, { defaultState } from '..'
+import { Position } from '../../../board/types'
+import players, { Names } from '../../../board/state/players'
+import pile from '../../../board/state/pile'
 import loading from '../loading'
 
 describe('Root reducer', () => {

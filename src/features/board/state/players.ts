@@ -1,18 +1,12 @@
-import { createAction, handleActions } from '../lib/utils'
-import { Action, Card } from '../types'
+import { createAction, handleActions } from '../../../shared/utils'
+import { Card, Position } from '../types'
+import { Action } from '../../../shared/types'
 
 export enum Names {
   Me = 'Me',
   Milisav = 'Milisav',
   Mileva = 'Mileva',
   Djura = 'Djura',
-}
-
-export enum Position {
-  Bottom,
-  Left,
-  Top,
-  Right,
 }
 
 type Score = number
