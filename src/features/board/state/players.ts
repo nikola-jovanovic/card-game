@@ -1,6 +1,6 @@
+import { Action } from '../../../shared/types'
 import { createAction, handleActions } from '../../../shared/utils'
 import { Card, Names, Player, Score } from '../types'
-import { Action } from '../../../shared/types'
 
 export type State = {
   [name in keyof typeof Names]: Player

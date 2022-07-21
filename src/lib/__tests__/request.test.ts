@@ -1,5 +1,5 @@
-import request, { ResponseError } from '../request'
 import mockFetch from '../../testing/mockFetch'
+import request, { ResponseError } from '../request'
 
 describe('request', () => {
   it('success', async () => {

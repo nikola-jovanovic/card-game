@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 import styled from 'styled-components'
 
 import Centered from '../../../shared/components/Centered'
+import FlexContainer from '../../../shared/components/FlexContainer'
 import { Pile as PileT } from '../types'
 import Card from './Card'
 
@@ -13,10 +14,10 @@ const Wrapper = styled.div`
   display: block;
   width: 100%;
   text-align: center;
+  max-width: 200px;
 `
 
-const FlexContainer = styled.div`
-  display: flex;
+const Container = styled(FlexContainer)`
   justify-content: space-between;
 `
 
@@ -27,14 +28,14 @@ const Pile = ({ pile }: Props): JSX.Element => {
         <div>
           {pile.Milisav && <Card {...pile.Milisav} />}
         </div>
-        <FlexContainer>
+        <Container>
           <div>
             {pile.Mileva && <Card {...pile.Mileva} />}
           </div>
           <div>
             {pile.Djura && <Card {...pile.Djura} />}
           </div>
-        </FlexContainer>
+        </Container>
         <div>
           {pile.Me && <Card {...pile.Me} />}
         </div>

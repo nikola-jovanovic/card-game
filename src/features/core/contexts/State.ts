@@ -1,5 +1,6 @@
 import { createContext } from 'react'
-import { State, defaultState } from '../state'
+
+import { defaultState,State } from '../state'
 
 const StateContext = createContext<State>(defaultState)
 

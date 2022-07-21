@@ -1,9 +1,9 @@
-import reducer, { defaultState, State } from '..'
-import players, { actions as playersActions } from '../../../board/state/players'
-import pile, { actions as pileActions } from '../../../board/state/pile'
 import { actions as loadingActions } from '../../../board/state/loading'
-import { actions as selectedActions } from '../selected'
+import pile, { actions as pileActions } from '../../../board/state/pile'
+import players, { actions as playersActions } from '../../../board/state/players'
 import { Card, Names, Player } from '../../../board/types'
+import reducer, { defaultState, State } from '..'
+import { actions as selectedActions } from '../selected'
 
 describe('Root reducer', () => {
   describe('players', () => {

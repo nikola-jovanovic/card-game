@@ -1,12 +1,12 @@
-import players, {
-  State as PlayersState,
-} from './players'
-import pile, {
-  State as PileState,
-} from './pile'
 import loading, {
   State as LoadingState,
 } from './loading'
+import pile, {
+  State as PileState,
+} from './pile'
+import players, {
+  State as PlayersState,
+} from './players'
 
 export type State = {
   players: PlayersState

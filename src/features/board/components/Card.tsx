@@ -5,7 +5,7 @@ import { Card as CardT } from '../types'
 
 export type Props = CardT & {
   facedown?: boolean
-  onClick?: any
+  onClick?: (card: CardT) => void
 }
 
 const Image = styled.img`
@@ -15,7 +15,6 @@ const Image = styled.img`
 const Button = styled.button`
   border: none;
   padding: 0;
-  margin-right: 4px;
   background-color: transparent;
   cursor: pointer;
 `
@@ -36,7 +35,9 @@ const Card = ({
     )
   }
 
-  const handleClick = () => onClick({ code, value, image })
+  const handleClick = () => {
+    if (onClick) onClick({ code, value, image })
+  }
   const img = <Image src={image} aria-label={code} />
 
   return onClick ? (

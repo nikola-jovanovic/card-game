@@ -1,8 +1,8 @@
 import React from 'react'
 
-import api from './features/board/api'
-import { render, screen, fireEvent, waitFor } from './testing'
 import App from './App'
+import api from './features/board/api'
+import { fireEvent, render, screen, waitFor } from './testing'
 
 describe('App', () => {
   it('render', async () => {

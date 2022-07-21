@@ -1,12 +1,13 @@
 import { useCallback, useContext } from 'react'
-import useDispatch from '../core/hooks/useDispatch'
+
 import StateContext from '../core/contexts/State'
+import useDispatch from '../core/hooks/useDispatch'
 import useSelected from '../core/hooks/useSelected'
+import { getCards,getData } from './service'
+import { actions as loadingActions } from './state/loading'
 import { actions as pileActions } from './state/pile'
 import { actions as playersActions } from './state/players'
-import { actions as loadingActions } from './state/loading'
-import { Card, Names } from './types'
-import { getData, getCards } from './service'
+import { Card, Names, Player } from './types'
 
 const playerNames = [Names.Me, Names.Milisav, Names.Mileva, Names.Djura]
 
@@ -55,11 +56,11 @@ const useBoard = () => {
     })
   }
 
-  const highestScore = Math.max(...activePlayers.map((_: any) => _.score))
+  const highestScore = Math.max(...activePlayers.map(({ score }: Player) => score))
   const finalScore = players.Me.active && players.Me.cards.length === 0 &&
     Object.values(pile).length === 0 && {
     value: highestScore,
-    winners: activePlayers.filter((player: any) => player.score === highestScore),
+    winners: activePlayers.filter((player: Player) => player.score === highestScore),
   }
 
   return {

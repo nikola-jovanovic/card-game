@@ -3,4 +3,3 @@ export type Action<P, M = void> = {
   payload: P
   meta: M
 }
-

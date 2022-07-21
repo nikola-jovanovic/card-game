@@ -1,5 +1,6 @@
 
 import { Reducer } from 'react'
+
 import { Action } from './types'
 
 interface IActionCreator<P, M> {

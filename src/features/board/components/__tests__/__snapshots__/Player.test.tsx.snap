@@ -69,7 +69,6 @@ exports[`Player user 1`] = `
 .c4 {
   border: none;
   padding: 0;
-  margin-right: 4px;
   background-color: transparent;
   cursor: pointer;
 }
@@ -79,7 +78,7 @@ exports[`Player user 1`] = `
 }
 
 .c3 > img {
-  margin-left: -50px;
+  margin-left: 0px;
 }
 
 .c1 {

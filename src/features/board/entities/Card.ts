@@ -1,6 +1,6 @@
-import { string, type, Type, success, exact } from 'io-ts'
 import { chain } from 'fp-ts/Either'
 import { pipe } from 'fp-ts/function'
+import { exact,string, success, Type, type } from 'io-ts'
 
 const Cards: { [index: string]: number } = {
   'ACE': 1,

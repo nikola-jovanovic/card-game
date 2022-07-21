@@ -14,14 +14,13 @@ type Result = {
   pile: State
 }
 
-const fromNumber = (length: number, mapper: () => any) => Array.from({ length }, () => mapper)
+const fromNumber = <T>(length: number, mapper: () => T) => Array.from({ length }, () => mapper)
 const rand = (n: number) => Math.floor(Math.random() * n + 1)
 
 const serial = (funcs: any) =>
   funcs.reduce((promise: any, func: any) => {
     return promise.then((result: any) => func().then((x: any) => x ? [...result, x] : result))
   }, Promise.resolve([]))
-
 
 export function getData(players: number): Promise<Card[][]> {
   return new Promise((resolve, reject) => {

@@ -22,7 +22,6 @@ exports[`Card render 1`] = `
 .c0 {
   border: none;
   padding: 0;
-  margin-right: 4px;
   background-color: transparent;
   cursor: pointer;
 }

@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
+
 import Button from '../../shared/components/Button'
 import Centered from '../../shared/components/Centered'
+import FlexContainer from '../../shared/components/FlexContainer'
 import Title from '../../shared/components/Title'
 import Pile from './components/Pile'
 import Player from './components/Player'
@@ -9,29 +11,21 @@ import useBoard from './useBoard'
 
 type Props = { selected: number }
 
-const Wrapper = styled.div`
-  display: flex;
+const Wrapper = styled(FlexContainer)`
   flex-direction: column;
   height: 100%;
   padding: 20px;
-`
-
-const Container = styled.div`
-  display: flex;
-  flex: 1;
 `
 
 const Flex = styled.div`
   flex: 1;
 `
 
-const ExtendedFlex = styled(Flex)`
-  flex: 1;
-  display: flex;
+const Middle = styled(FlexContainer)`
   align-items: center;
 `
 
-const PlayerWrapper = styled.div`
+const CenteredItem = styled.div`
   display: flex;
   justify-content: center;
 `
@@ -51,15 +45,15 @@ const Board = ({ selected }: Props): JSX.Element => {
     )
   }
 
+  const SideContainer = selected === 3 ? Flex : 'div'
+
   return (
     <Wrapper>
-      <PlayerWrapper>
+      <CenteredItem>
         {players.Milisav.active && <Player {...players.Milisav} variant="cpu" />}
-      </PlayerWrapper>
-      <Container>
-        <ExtendedFlex>
-          {players.Mileva.active && <Player {...players.Mileva} variant="cpu" />}
-        </ExtendedFlex>
+      </CenteredItem>
+      <Middle>
+        <SideContainer>{players.Mileva.active && <Player {...players.Mileva} variant="cpu" />}</SideContainer>
         <Flex>
           {Object.values(pile).length > 0 && <Pile pile={pile} />}
           {finalScore && (
@@ -75,17 +69,15 @@ const Board = ({ selected }: Props): JSX.Element => {
             </Centered>
           )}
         </Flex>
-        <ExtendedFlex>
-          {players.Djura.active && <Player {...players.Djura} variant="cpu" />}
-        </ExtendedFlex>
-      </Container>
-      <PlayerWrapper>
+        <SideContainer>{players.Djura.active && <Player {...players.Djura} variant="cpu" />}</SideContainer>
+      </Middle>
+      <CenteredItem>
         {players.Me.active && <Player
           {...players.Me}
           variant="user"
-          onPlay={Object.values(pile).length === 0 && playCard}
+          onPlay={Object.values(pile).length === 0 ? playCard : undefined}
         />}
-      </PlayerWrapper>
+      </CenteredItem>
     </Wrapper>
   )
 }

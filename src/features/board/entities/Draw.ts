@@ -1,9 +1,9 @@
-import { type, TypeOf, array, exact } from 'io-ts'
 import { map, mapLeft } from 'fp-ts/Either'
 import { pipe } from 'fp-ts/function'
+import { array, exact,type, TypeOf } from 'io-ts'
 
-import { Card } from './Card'
 import { decodeErrors } from '../utils'
+import { Card } from './Card'
 
 const Draw = exact(
   type(

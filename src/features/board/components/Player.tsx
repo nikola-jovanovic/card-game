@@ -2,19 +2,19 @@ import React, { memo } from 'react'
 import styled from 'styled-components'
 
 import Title from '../../../shared/components/Title'
-import { Player as PlayerT } from '../types'
+import { Card as CardT, Player as PlayerT } from '../types'
 import Card from './Card'
 
 export type Props = PlayerT & {
   variant: 'user' | 'cpu'
-  onPlay?: any
+  onPlay?: (card: CardT) => void
 }
 
 const CardWrapper = styled.div<{ padding: boolean }>`
   padding-left: ${(props) => (props.padding ? 50 : 0)}px;
 
   & > img {
-    margin-left: -50px;
+    margin-left: ${(props) => (props.padding ? -50 : 0)}px;
   }
 `
 

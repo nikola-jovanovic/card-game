@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+
 import Board from '../../board/Board'
 import Selection from '../../selection/Selection'
 import useSelected from '../hooks/useSelected'

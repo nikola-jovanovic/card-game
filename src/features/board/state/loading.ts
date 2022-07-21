@@ -1,5 +1,5 @@
-import { createAction, handleActions } from '../../../shared/utils'
 import { Action } from '../../../shared/types'
+import { createAction, handleActions } from '../../../shared/utils'
 
 export type State = boolean
 

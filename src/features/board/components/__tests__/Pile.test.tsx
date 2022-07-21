@@ -1,8 +1,8 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
+import React from 'react'
 
-import Pile, { Props } from '../Pile'
 import { Names } from '../../types'
+import Pile, { Props } from '../Pile'
 
 describe('Pile', () => {
   const props: Props = {

@@ -1,8 +1,8 @@
+import { fireEvent,render, screen } from '@testing-library/react'
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
 
-import Player, { Props } from '../Player'
 import { Names } from '../../types'
+import Player, { Props } from '../Player'
 
 describe('Player', () => {
   let props: Props
