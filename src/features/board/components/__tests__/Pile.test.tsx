@@ -18,6 +18,14 @@ describe('Pile', () => {
     [Names.Djura]: { image: 'image', value: 1, code: 'AH' }
   }
 
+  const players4Props = {
+    pile: {
+      ...props.pile,
+      ...third,
+      ...fourth
+    }
+  }
+
   it('2 players', () => {
     const { container } = render(<Pile {...props} />)
 
@@ -46,20 +54,19 @@ describe('Pile', () => {
   })
 
   it('4 players', () => {
-    const newProps = {
-      pile: {
-        ...props.pile,
-        ...third,
-        ...fourth
-      }
-    }
-    const { container } = render(<Pile {...newProps} />)
+    const { container } = render(<Pile {...players4Props} />)
 
     expect(screen.getAllByRole('img').length).toEqual(4)
     expect(screen.getByRole('img', { name: /jh/i })).toBeInTheDocument()
     expect(screen.getByRole('img', { name: /qh/i })).toBeInTheDocument()
     expect(screen.getByRole('img', { name: /kh/i })).toBeInTheDocument()
     expect(screen.getByRole('img', { name: /ah/i })).toBeInTheDocument()
+
+    expect(container).toMatchSnapshot()
+  })
+
+  it('4 players inline', () => {
+    const { container } = render(<Pile {...players4Props} inline />)
 
     expect(container).toMatchSnapshot()
   })

@@ -1,6 +1,6 @@
 import { map, mapLeft } from 'fp-ts/Either'
-import { pipe } from 'fp-ts/function'
-import { array, exact,type, TypeOf } from 'io-ts'
+import { flow } from 'fp-ts/function'
+import { array, exact, type, TypeOf } from 'io-ts'
 
 import { decodeErrors } from '../utils'
 import { Card } from './Card'
@@ -14,10 +14,8 @@ const Draw = exact(
   ),
 )
 
-export const getCards = (draw: unknown) =>
-  pipe(
-    draw,
-    Draw.decode,
-    mapLeft(decodeErrors),
-    map(({ cards }: TypeOf<typeof Draw>) => cards),
-  )
+export const getCards = flow(
+  Draw.decode,
+  mapLeft(decodeErrors),
+  map(({ cards }: TypeOf<typeof Draw>) => cards),
+)

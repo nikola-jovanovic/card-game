@@ -1,5 +1,5 @@
 import { map, mapLeft } from 'fp-ts/Either'
-import { pipe } from 'fp-ts/function'
+import { flow } from 'fp-ts/function'
 import { string, type, TypeOf } from 'io-ts'
 
 import { decodeErrors } from '../utils'
@@ -11,12 +11,10 @@ const Deck = type(
   'Deck',
 )
 
-export const getId = (deck: unknown) =>
-  pipe(
-    deck,
-    Deck.decode,
-    mapLeft(decodeErrors),
-    map(
-      ({ deck_id }: TypeOf<typeof Deck>) => deck_id
-    ),
-  )
+export const getId = flow(
+  Deck.decode,
+  mapLeft(decodeErrors),
+  map(
+    ({ deck_id }: TypeOf<typeof Deck>) => deck_id
+  ),
+)

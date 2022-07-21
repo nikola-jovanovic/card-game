@@ -1,5 +1,5 @@
 import { fold } from 'fp-ts/Either'
-import { identity, pipe } from 'fp-ts/function'
+import { flow, identity } from 'fp-ts/function'
 
 import api from './api'
 import { getId } from './entities/Deck'
@@ -25,9 +25,8 @@ const serial = (funcs: any) =>
 export function getData(players: number): Promise<Card[][]> {
   return new Promise((resolve, reject) => {
     api.getDeck()
-      .then((deck) => {
-        pipe(
-          deck,
+      .then(
+        flow(
           getId,
           fold(
             reject,
@@ -36,23 +35,21 @@ export function getData(players: number): Promise<Card[][]> {
                 fromNumber(players,
                   () =>
                     api.getDraw(id)
-                      .then((draw: unknown) => pipe(
-                        draw,
-                        getCardsProp,
-                        fold(
-                          reject,
-                          identity
-                        ),
-                      )
-                      )
+                      .then(
+                        flow(
+                          getCardsProp,
+                          fold(
+                            reject,
+                            identity
+                          ),
+                        ))
                 )
               )
                 .then(resolve)
                 .catch(reject)
             },
           ),
-        )
-      })
+        ))
       .catch(reject)
   })
 }

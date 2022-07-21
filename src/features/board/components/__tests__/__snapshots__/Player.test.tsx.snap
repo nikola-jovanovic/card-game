@@ -55,6 +55,40 @@ exports[`Player cpu 1`] = `
 </div>
 `;
 
+exports[`Player hideCards 1`] = `
+.c0 {
+  color: #fff;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.c1 {
+  color: white;
+  margin: 0 0 5px;
+}
+
+.c2 {
+  margin: 0 0 10px;
+}
+
+<div>
+  <div>
+    <h2
+      class="c0 c1"
+      color="white"
+    >
+      Me
+    </h2>
+    <p
+      class="c2"
+    >
+      Score: 
+      50
+    </p>
+  </div>
+</div>
+`;
+
 exports[`Player user 1`] = `
 .c0 {
   color: #fff;
@@ -67,10 +101,10 @@ exports[`Player user 1`] = `
 }
 
 .c4 {
-  border: none;
-  padding: 0;
   background-color: transparent;
+  border: none;
   cursor: pointer;
+  padding: 0;
 }
 
 .c3 {

@@ -1,6 +1,6 @@
 {
   "short_name": "Card Game",
-  "name": "Web app for playing cards with computer",
+  "name": "Web app for playing cards against computer",
   "icons": [
     {
       "src": "favicon.ico",

@@ -7,36 +7,44 @@ import { Pile as PileT } from '../types'
 import Card from './Card'
 
 export type Props = {
-  pile: PileT
+  pile: PileT,
+  inline?: boolean
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ inline?: boolean }>`
   display: block;
-  width: 100%;
+  max-width: ${(props) => props.inline ? 'auto' : '200px'};
   text-align: center;
-  max-width: 200px;
+  width: 100%;
 `
 
 const Container = styled(FlexContainer)`
   justify-content: space-between;
+  margin-top: 25px;
 `
 
-const Pile = ({ pile }: Props): JSX.Element => {
+const Pile = ({ pile, inline }: Props): JSX.Element => {
   return (
     <Centered>
-      <Wrapper>
+      <Wrapper inline={inline}>
         <div>
-          {pile.Milisav && <Card {...pile.Milisav} />}
+          {inline ? (
+            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+              {pile.Milisav && <Card {...pile.Milisav} />}
+              {pile.Mileva && <Card {...pile.Mileva} />}
+              {pile.Djura && <Card {...pile.Djura} />}
+            </div>
+          ) : pile.Milisav && <Card {...pile.Milisav} />}
         </div>
         <Container>
           <div>
-            {pile.Mileva && <Card {...pile.Mileva} />}
+            {!inline && pile.Mileva && <Card {...pile.Mileva} />}
           </div>
           <div>
-            {pile.Djura && <Card {...pile.Djura} />}
+            {!inline && pile.Djura && <Card {...pile.Djura} />}
           </div>
         </Container>
-        <div>
+        <div style={{ marginTop: '25px' }}>
           {pile.Me && <Card {...pile.Me} />}
         </div>
       </Wrapper>

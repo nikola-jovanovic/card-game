@@ -1,0 +1,401 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Board desktop 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c3 {
+  color: #fff;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.c7 {
+  max-width: 80px;
+}
+
+.c12 {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.c6 {
+  padding-left: 50px;
+}
+
+.c6 > img {
+  margin-left: -50px;
+}
+
+.c11 {
+  padding-left: 0px;
+}
+
+.c11 > img {
+  margin-left: 0px;
+}
+
+.c4 {
+  color: white;
+  margin: 0 0 5px;
+}
+
+.c10 {
+  color: yellow;
+  margin: 0 0 5px;
+}
+
+.c5 {
+  margin: 0 0 10px;
+}
+
+.c1 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+}
+
+.c9 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+<div>
+  <div
+    class="c0 c1"
+  >
+    <div
+      class="c2"
+    >
+      <div>
+        <h2
+          class="c3 c4"
+          color="white"
+        >
+          Milisav
+        </h2>
+        <p
+          class="c5"
+        >
+          Score: 
+          0
+        </p>
+        <div
+          class="c6"
+        >
+          <img
+            aria-label="facedown card"
+            class="c7"
+            src="https://dcassetcdn.com/design_img/3930521/154340/26190370/kfmqknarypcs90a4zrbf3ppavp_thumbnail.png"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="c0 c8"
+    >
+      <div>
+        <div>
+          <h2
+            class="c3 c4"
+            color="white"
+          >
+            Mileva
+          </h2>
+          <p
+            class="c5"
+          >
+            Score: 
+            0
+          </p>
+          <div
+            class="c6"
+          >
+            <img
+              aria-label="facedown card"
+              class="c7"
+              src="https://dcassetcdn.com/design_img/3930521/154340/26190370/kfmqknarypcs90a4zrbf3ppavp_thumbnail.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="c9"
+      />
+      <div>
+        <div>
+          <h2
+            class="c3 c4"
+            color="white"
+          >
+            Djura
+          </h2>
+          <p
+            class="c5"
+          >
+            Score: 
+            0
+          </p>
+          <div
+            class="c6"
+          >
+            <img
+              aria-label="facedown card"
+              class="c7"
+              src="https://dcassetcdn.com/design_img/3930521/154340/26190370/kfmqknarypcs90a4zrbf3ppavp_thumbnail.png"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="c2"
+    >
+      <div>
+        <h2
+          class="c3 c10"
+          color="yellow"
+        >
+          Me
+        </h2>
+        <p
+          class="c5"
+        >
+          Score: 
+          0
+        </p>
+        <div
+          class="c11"
+        >
+          <button
+            aria-label="JH"
+            class="c12"
+          >
+            <img
+              aria-label="JH"
+              class="c7"
+              src="image"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Board mobile 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c4 {
+  color: #fff;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.c12 {
+  max-width: 80px;
+}
+
+.c11 {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.c10 {
+  padding-left: 0px;
+}
+
+.c10 > img {
+  margin-left: 0px;
+}
+
+.c5 {
+  color: white;
+  margin: 0 0 5px;
+}
+
+.c9 {
+  color: yellow;
+  margin: 0 0 5px;
+}
+
+.c6 {
+  margin: 0 0 10px;
+}
+
+.c1 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+}
+
+.c8 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c3 {
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+}
+
+<div>
+  <div
+    class="c0 c1"
+  >
+    <div
+      class="c2"
+    >
+      <div
+        class="c0 c3"
+      >
+        <div>
+          <h2
+            class="c4 c5"
+            color="white"
+          >
+            Milisav
+          </h2>
+          <p
+            class="c6"
+          >
+            Score: 
+            0
+          </p>
+        </div>
+        <div>
+          <h2
+            class="c4 c5"
+            color="white"
+          >
+            Mileva
+          </h2>
+          <p
+            class="c6"
+          >
+            Score: 
+            0
+          </p>
+        </div>
+        <div>
+          <h2
+            class="c4 c5"
+            color="white"
+          >
+            Djura
+          </h2>
+          <p
+            class="c6"
+          >
+            Score: 
+            0
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="c0 c7"
+    >
+      <div
+        class="c8"
+      />
+    </div>
+    <div
+      class="c2"
+    >
+      <div>
+        <h2
+          class="c4 c9"
+          color="yellow"
+        >
+          Me
+        </h2>
+        <p
+          class="c6"
+        >
+          Score: 
+          0
+        </p>
+        <div
+          class="c10"
+        >
+          <button
+            aria-label="JH"
+            class="c11"
+          >
+            <img
+              aria-label="JH"
+              class="c12"
+              src="image"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

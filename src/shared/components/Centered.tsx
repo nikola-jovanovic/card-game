@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 export default styled.div`
-  height: 100%;
-  display: flex;
   align-items: center;
+  display: flex;
+  height: 100%;
   justify-content: center;
   padding: 10px;
 `

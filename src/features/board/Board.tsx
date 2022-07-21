@@ -7,6 +7,7 @@ import FlexContainer from '../../shared/components/FlexContainer'
 import Title from '../../shared/components/Title'
 import Pile from './components/Pile'
 import Player from './components/Player'
+import useMediaQuery from './hooks/useMediaQuery'
 import useBoard from './useBoard'
 
 type Props = { selected: number }
@@ -29,9 +30,13 @@ const CenteredItem = styled.div`
   display: flex;
   justify-content: center;
 `
+const SpaceAroundContainer = styled(FlexContainer)`
+  justify-content: space-around;
+`
 
 const Board = ({ selected }: Props): JSX.Element => {
   const { init, loading, players, pile, playCard, finalScore, reset } = useBoard()
+  const desktop = useMediaQuery('(min-width: 992px)')
 
   useEffect(() => {
     init(selected)
@@ -50,12 +55,20 @@ const Board = ({ selected }: Props): JSX.Element => {
   return (
     <Wrapper>
       <CenteredItem>
-        {players.Milisav.active && <Player {...players.Milisav} variant="cpu" />}
+        {desktop || selected === 2 ?
+          players.Milisav.active && <Player {...players.Milisav} variant="cpu" /> :
+          <SpaceAroundContainer>
+            {players.Milisav.active && <Player {...players.Milisav} variant="cpu" hideCards />}
+            {players.Mileva.active && <Player {...players.Mileva} variant="cpu" hideCards />}
+            {players.Djura.active && <Player {...players.Djura} variant="cpu" hideCards />}
+          </SpaceAroundContainer>
+        }
+        { }
       </CenteredItem>
       <Middle>
-        <SideContainer>{players.Mileva.active && <Player {...players.Mileva} variant="cpu" />}</SideContainer>
+        {desktop && <SideContainer>{players.Mileva.active && <Player {...players.Mileva} variant="cpu" />}</SideContainer>}
         <Flex>
-          {Object.values(pile).length > 0 && <Pile pile={pile} />}
+          {Object.values(pile).length > 0 && <Pile pile={pile} inline={!desktop} />}
           {finalScore && (
             <Centered>
               <div>
@@ -69,7 +82,7 @@ const Board = ({ selected }: Props): JSX.Element => {
             </Centered>
           )}
         </Flex>
-        <SideContainer>{players.Djura.active && <Player {...players.Djura} variant="cpu" />}</SideContainer>
+        {desktop && <SideContainer>{players.Djura.active && <Player {...players.Djura} variant="cpu" />}</SideContainer>}
       </Middle>
       <CenteredItem>
         {players.Me.active && <Player

@@ -6,6 +6,14 @@ import { fireEvent, render, screen, waitFor } from './testing'
 
 describe('App', () => {
   it('render', async () => {
+    window.matchMedia = jest.fn().mockImplementation(query => ({
+      matches: true,
+      media: query,
+      onchange: null,
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    }))
     api.getDeck = jest.fn().mockImplementationOnce(() => Promise.resolve({ deck_id: '123' }))
     api.getDraw = jest.fn()
       .mockImplementationOnce(() => Promise.resolve({ cards: [{ code: 'JH', image: 'image', value: 'JACK' }] }))

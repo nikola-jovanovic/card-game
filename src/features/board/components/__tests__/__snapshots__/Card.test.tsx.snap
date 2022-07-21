@@ -20,10 +20,10 @@ exports[`Card render 1`] = `
 }
 
 .c0 {
-  border: none;
-  padding: 0;
   background-color: transparent;
+  border: none;
   cursor: pointer;
+  padding: 0;
 }
 
 <div>
@@ -37,5 +37,19 @@ exports[`Card render 1`] = `
       src="image-url"
     />
   </button>
+</div>
+`;
+
+exports[`Card render without click 1`] = `
+.c0 {
+  max-width: 80px;
+}
+
+<div>
+  <img
+    aria-label="JH"
+    class="c0"
+    src="image-url"
+  />
 </div>
 `;

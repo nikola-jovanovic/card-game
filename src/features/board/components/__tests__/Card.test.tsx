@@ -1,4 +1,4 @@
-import { fireEvent,render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import React from 'react'
 
 import Card, { Props } from '../Card'
@@ -35,6 +35,15 @@ describe('Card', () => {
     const { container } = render(<Card {...props} facedown />)
 
     expect(screen.getByRole('img', { name: /facedown/i })).toBeInTheDocument()
+
+    expect(container).toMatchSnapshot()
+  })
+
+  it('render without click', () => {
+    const { container } = render(<Card {...props} />)
+
+    expect(screen.getByRole('img', { name: /jh/i })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /jh/i })).not.toBeInTheDocument()
 
     expect(container).toMatchSnapshot()
   })

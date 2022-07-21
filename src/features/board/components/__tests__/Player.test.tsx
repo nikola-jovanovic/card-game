@@ -1,4 +1,4 @@
-import { fireEvent,render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import React from 'react'
 
 import { Names } from '../../types'
@@ -44,6 +44,14 @@ describe('Player', () => {
 
     expect(screen.getByRole('img', { name: /facedown/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: /me/i, level: 2 })).toBeInTheDocument()
+
+    expect(container).toMatchSnapshot()
+  })
+
+  it('hideCards', () => {
+    const { container } = render(<Player {...props} variant='cpu' hideCards />)
+
+    expect(screen.queryByRole('img', { name: /facedown/i })).not.toBeInTheDocument()
 
     expect(container).toMatchSnapshot()
   })
